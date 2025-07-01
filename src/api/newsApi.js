@@ -19,7 +19,7 @@ export async function fetchArticles(category = "business") {
   }
 }
 
-
+const BASE_URL= "https://backend-1-g460.onrender.com/";
 export async function summarizeArticle(text, setSummary) {
   console.log(" Sending text to backend:", text);
 
@@ -30,7 +30,7 @@ export async function summarizeArticle(text, setSummary) {
   }
 
   try {
-    const res = await fetch("http://localhost:5000/api/summarize", {
+    const res = await fetch(`${BASE_URL}/api/summarize`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text }),
@@ -50,7 +50,7 @@ export async function summarizeArticle(text, setSummary) {
   }
 }
 export async function saveSummaryToBackend(article, summary) {
-  const res = await fetch("http://localhost:5000/api/save-summary", {
+  const res = await fetch(`${BASE_URL}/api/save-summary`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
