@@ -19,7 +19,7 @@ export async function fetchArticles(category = "business") {
   }
 }
 
-const BASE_URL= "https://backend-1-g460.onrender.com/";
+const BASE_URL= "https://backend-1-g460.onrender.com";
 export async function summarizeArticle(text, setSummary) {
   console.log(" Sending text to backend:", text);
 
