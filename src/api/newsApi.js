@@ -1,28 +1,24 @@
 import axios from "axios";
 
-export async function fetchArticles(category) {
-  const apiKey = import.meta.env.VITE_NEWSAPI_KEY;
 
-  if (!apiKey) {
-    throw new Error(" NewsAPI key is missing in your .env file.");
-  }
-
+export async function fetchArticles(category = "business") {
   try {
-    const response = await axios.get("https://newsapi.org/v2/top-headlines", {
-      params: {
-        country: "us",
-        category,
-        apiKey: apiKey,
-      },
-    });
+    
+    const res = await fetch(`/.netlify/functions/fetch-articles?category=${category}`);
+    const data = await res.json();
 
-    console.log("Articles fetched:", response.data.articles.length);
-    return response.data.articles;
+    if (!res.ok) {
+      throw new Error(data.error || "Failed to fetch articles");
+    }
+
+    console.log(`Fetched ${data.length} articles for category: ${category}`);
+    return data;
   } catch (error) {
-    console.error(" Fetching articles failed:", error.response?.data || error.message);
-    throw new Error("Failed to fetch articles.");
+    console.error("Fetching articles failed:", error);
+    throw error;
   }
 }
+
 
 export async function summarizeArticle(text, setSummary) {
   console.log(" Sending text to backend:", text);
