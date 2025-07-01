@@ -5,17 +5,17 @@ import "slick-carousel/slick/slick-theme.css";
 export default function HeroBanner() {
   const slides = [
     {
-      img: "/src/assets/slide1.jpeg",
+      img: "./assets/slide1.jpeg",
       title: "Top Business Headlines",
       subtitle: "Stay updated with the latest market trends.",
     },
     {
-      img: "/src/assets/slide2.jpeg",
+      img: "./assets/slide2.jpeg",
       title: "Tech Innovations",
       subtitle: "Discover cutting-edge technology news.",
     },
     {
-      img: "/src/assets/slide3.jpeg",
+      img: "./assets/slide3.jpeg",
       title: "Live Sports Updates",
       subtitle: "Catch up with the biggest sports stories.",
     },
@@ -28,6 +28,12 @@ export default function HeroBanner() {
     speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
+    beforeChange: () => {
+    
+    if (document.activeElement) {
+      document.activeElement.blur();
+    }
+  },
   };
 
   return (

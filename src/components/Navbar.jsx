@@ -21,7 +21,7 @@ export default function Navbar() {
       <div className="flex justify-between items-center">
         {}
         <div className="flex items-center space-x-2">
-          <img src="/src/assets/logo1.jpg" alt="Logo" className="w-8 h-8" />
+          <img src="./assets/logo1.jpg" alt="Logo" className="w-8 h-8" />
           <h1 className="text-2xl font-bold text-blue-600 dark:text-blue-400">
             ADP NEWS
           </h1>
