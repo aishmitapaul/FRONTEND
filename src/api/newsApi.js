@@ -66,3 +66,5 @@ export async function saveSummaryToBackend(article, summary) {
   if (!res.ok) throw new Error(data.error || "Failed to save summary");
   return data;
 }
+
+
